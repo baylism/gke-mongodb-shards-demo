@@ -27,6 +27,14 @@ spec:
         replicaset: ConfigDBRepSet
     spec:
       affinity:
+        nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: cloud.google.com/gke-nodepool
+                  operator: In
+                  values:
+                  - database
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 100
@@ -82,10 +90,9 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: mongo-configdb-persistent-storage-claim
-      annotations:
-        volume.beta.kubernetes.io/storage-class: "fast"
     spec:
       accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "faster-xfs"
       resources:
         requests:
           storage: 4Gi
