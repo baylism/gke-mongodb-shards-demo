@@ -3,9 +3,9 @@
 # Script to deploy a Kubernetes project with a StatefulSet running a MongoDB Sharded Cluster, to GKE.
 ##
 
-MONGO_ADMIN_PASSWORD="045a0b06a421c786e79560ac6fd96ff1"
-CLUSTER="blockchain-analysis-cluster"
-NODE_POOL="database"
+MONGO_ADMIN_PASSWORD=""
+CLUSTER=""
+NODE_POOL=""
 
 # ========== Add an Ubuntu node pool to exsting GKE cluster ==========
 # see https://cloudplatform.googleblog.com/2016/05/introducing-Google-Container-Engine-GKE-node-pools.html
